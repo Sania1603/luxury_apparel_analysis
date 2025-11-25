@@ -1,6 +1,6 @@
 # 👜 Luxury Apparel Analytics using SQL
 
-
+![Luzury Apparel](
 
 ## Overview
 This project delivers an end-to-end SQL-based analysis of a 5,000-product Luxury Apparel Catalog using PostgreSQL.
@@ -200,3 +200,15 @@ ORDER BY
     category,
     subcategory;
 ```
+
+## Conclusion
+This SQL project demonstrates advanced analytics techniques including:
+
+-Window functions
+-Text splitting & regex
+-Full-text search
+-Rollup aggregations
+-Category/subcategory trend analysis
+-Material & brand inference
+Perfect for showcasing SQL skills, data cleaning, text analytics, and business understanding in your portfolio.
+---
