@@ -1,6 +1,6 @@
 # 👜 Luxury Apparel Analytics using SQL
 
-![Luzury Apparel](
+![luxury brands](https://github.com/user-attachments/assets/bb25f08d-ea00-4ad7-8c71-9c77d8856277)
 
 ## Overview
 This project delivers an end-to-end SQL-based analysis of a 5,000-product Luxury Apparel Catalog using PostgreSQL.
