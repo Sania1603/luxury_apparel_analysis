@@ -204,11 +204,11 @@ ORDER BY
 ## Conclusion
 This SQL project demonstrates advanced analytics techniques including:
 
--Window functions
--Text splitting & regex
--Full-text search
--Rollup aggregations
--Category/subcategory trend analysis
--Material & brand inference
+Window functions
+Text splitting & regex
+Full-text search
+Rollup aggregations
+Category/subcategory trend analysis
+Material & brand inference
 Perfect for showcasing SQL skills, data cleaning, text analytics, and business understanding in your portfolio.
 ---
