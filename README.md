@@ -202,6 +202,7 @@ ORDER BY
 ```
 
 ## Conclusion
+
 This SQL project demonstrates advanced analytics techniques including:
 Window functions
 Text splitting & regex
