@@ -43,8 +43,6 @@ CREATE TABLE luxury_apparel (
 ---
 
 --sql
---QUERY(1) - Category-wise Product Share Using Window Function
--- Category-wise product count + % share of total catalog
 SELECT 
     category,
     COUNT(*) AS product_count,
@@ -58,8 +56,6 @@ ORDER BY product_count DESC;
 ---
 
 ---sql
---QUERY(2) - Top Subcategories per Category (Ranking with Window Functions)
--- Rank subcategories inside each category by number of products
 SELECT
     category,
     subcategory,
@@ -74,8 +70,6 @@ ORDER BY category, subcategory_rank;
 ---
 
 ---sql
---QUERY(3) - Material-Based Grouping from Description (CASE + ILIKE)
--- Classify products by key material mentioned in description
 SELECT 
     material_group,
     COUNT(*) AS product_count
@@ -96,8 +90,6 @@ ORDER BY product_count DESC;
 ---
 
 ---sql
---QUERY(4) - Longest Product Descriptions (Content Depth)
--- See which products have the longest descriptions
 SELECT 
     id,
     category,
@@ -110,8 +102,6 @@ LIMIT 20;
 ---
 
 ---sql
---QUERY(5) - Most Frequent Keywords in Product Names (Text + CTE + LATERAL)
--- Find most common words used in product names
 WITH tokens AS (
     SELECT 
         LOWER(
@@ -139,8 +129,6 @@ LIMIT 30;
 ---
 
 ---sql
---QUERY(6) - Products Where Description Doesn’t Mention Subcategory
--- Spot products where subcategory isn't mentioned in the description
 SELECT 
     id,
     category,
@@ -154,8 +142,6 @@ WHERE
 ---
 
 ---sql
---QUERY(7) - Brand Hint Analysis Using First Word as Brand
--- Approximate "brand" as the first word of the product name
 WITH brand_base AS (
     SELECT
         TRIM(SPLIT_PART(product_name, ' ', 1)) AS brand_hint
@@ -171,8 +157,6 @@ ORDER BY product_count DESC;
 ---
 
 ---sql
---QUERY(8) - Full-Text Search on ProductName + Description
--- Find products relevant for "cashmere scarf" using full text search
 SELECT 
     id,
     category,
@@ -188,8 +172,6 @@ LIMIT 30;
 ---
 
 ---sql
---QUERY(9) - Detect Exact Duplicate Product Names
--- Check if any product names are duplicated
 SELECT 
     LOWER(product_name) AS normalized_name,
     COUNT(*) AS occurrences
@@ -200,11 +182,9 @@ ORDER BY occurrences DESC;
 ---
 
 ---sql
--- QUERY(10) - Multi-level Category & Subcategory Summary using ROLLUP
--- Gives product counts at:
--- 1) Category + Subcategory level
--- 2) Category total level
--- 3) Overall catalog total
+1) Category + Subcategory level
+2) 2) Category total level
+3) Overall catalog total
 
 SELECT
     COALESCE(category, 'ALL CATEGORIES')    AS category,
