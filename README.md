@@ -32,7 +32,7 @@ This dataset includes luxury fashion items from categories like footwear, access
 ---
 
 ## Database Schema
----sql
+```sql
 CREATE TABLE luxury_apparel (
     id INT,
     category TEXT,
@@ -40,9 +40,9 @@ CREATE TABLE luxury_apparel (
     product_name TEXT,
     description TEXT
 );
----
+```
 
---sql
+```sql
 SELECT 
     category,
     COUNT(*) AS product_count,
@@ -53,9 +53,9 @@ SELECT
 FROM luxury_apparel
 GROUP BY category
 ORDER BY product_count DESC;
----
+```
 
----sql
+```sql
 SELECT
     category,
     subcategory,
@@ -67,9 +67,9 @@ SELECT
 FROM luxury_apparel
 GROUP BY category, subcategory
 ORDER BY category, subcategory_rank;
----
+```
 
----sql
+```sql
 SELECT 
     material_group,
     COUNT(*) AS product_count
@@ -87,9 +87,9 @@ FROM (
 ) AS t
 GROUP BY material_group
 ORDER BY product_count DESC;
----
+```
 
----sql
+```sql
 SELECT 
     id,
     category,
@@ -99,9 +99,9 @@ SELECT
 FROM luxury_apparel
 ORDER BY description_length DESC
 LIMIT 20;
----
+```
 
----sql
+```sql
 WITH tokens AS (
     SELECT 
         LOWER(
@@ -126,9 +126,9 @@ GROUP BY token
 HAVING COUNT(*) > 5
 ORDER BY frequency DESC
 LIMIT 30;
----
+```
 
----sql
+```sql
 SELECT 
     id,
     category,
@@ -139,9 +139,9 @@ FROM luxury_apparel
 WHERE 
     subcategory IS NOT NULL
     AND description NOT ILIKE '%' || subcategory || '%';
----
+```
 
----sql
+```sql
 WITH brand_base AS (
     SELECT
         TRIM(SPLIT_PART(product_name, ' ', 1)) AS brand_hint
@@ -154,9 +154,9 @@ FROM brand_base
 GROUP BY brand_hint
 HAVING COUNT(*) > 20
 ORDER BY product_count DESC;
----
+```
 
----sql
+```sql
 SELECT 
     id,
     category,
@@ -169,9 +169,9 @@ WHERE
         COALESCE(product_name, '') || ' ' || COALESCE(description, '')
     ) @@ plainto_tsquery('english', 'cashmere scarf')
 LIMIT 30;
----
+```
 
----sql
+```sql
 SELECT 
     LOWER(product_name) AS normalized_name,
     COUNT(*) AS occurrences
@@ -179,9 +179,9 @@ FROM luxury_apparel
 GROUP BY LOWER(product_name)
 HAVING COUNT(*) > 1
 ORDER BY occurrences DESC;
----
+```
 
----sql
+```sql
 1) Category + Subcategory level
 2) 2) Category total level
 3) Overall catalog total
@@ -199,4 +199,4 @@ ORDER BY
     END,
     category,
     subcategory;
----
+```
